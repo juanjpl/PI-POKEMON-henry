@@ -11,11 +11,12 @@ Nombre
 
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('pokemon', {
+  sequelize.define('type', {
       id:{
           type:DataTypes.UUID,
           unique: true,
           allowNull: false,
+          primaryKey: true,
           defaultValue: DataTypes.UUIDV4
       },
     name: {
