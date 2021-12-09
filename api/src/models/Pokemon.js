@@ -38,16 +38,42 @@ module.exports = (sequelize) => {
       allowNull:true,
       defaultValue:0
     },
-    pokemon_types:{
-      type: DataTypes.ARRAY(DataTypes.STRING)
-    },
     sprites:{
       type:DataTypes.STRING,
+      allowNull:true,
       defaultValue:"https://2.bp.blogspot.com/-Va_nTr_dKSA/XNbCScGn0SI/AAAAAAAAHwE/FMKyp5FfDqseO7IUVPl04I38x7SyKtHwwCLcBGAs/s1600/PokeBall%2BPokemon%2BLogo%2B%255Bwww.blogovector.com%255D.png"
     },
     moves:{
-      type:DataTypes.ARRAY(DataTypes.STRING)
+      type:DataTypes.ARRAY(DataTypes.STRING),
+      allowNull:true,
+      defaultValue: ["Unknown"]
+    },
+    hp:{
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      defaultValue:0
+    },
+    attack:{
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      defaultValue:0
+    },
+    defense:{
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      defaultValue:0
+    },
+    speed:{
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      defaultValue:0
+    },
+    createdInDB:{
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      defaultValue: true
     }
+
    
 
   });

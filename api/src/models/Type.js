@@ -23,5 +23,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    url:{
+      type: DataTypes.STRING,
+      
+  }
   });
 };
