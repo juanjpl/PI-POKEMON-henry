@@ -8,6 +8,7 @@ const {obtenerPokemons , crearPokemons, buscarPokemon , borrarPokemon } = requir
 
 
 
+
 //ruta para traer los pokemons
 router.get('/', obtenerPokemons);
 
@@ -20,6 +21,15 @@ router.post('/', crearPokemons);
 //ruta para borrar pokemons
 router.delete('/:id' , borrarPokemon );
 
+
+
+
+
+
+
+
+
+
 //filtros por back 
 
 router.get("/order/:dato" , async(req,res)=>{
@@ -27,9 +37,9 @@ router.get("/order/:dato" , async(req,res)=>{
     const {dato} = req.params;  //human, alien,
 
     if(dato){
-        const actividad = await Character.findAll({
+        const actividad = await Pokemon.findAll({
             where:{
-                species: dato
+                types: dato
             },
         });
 

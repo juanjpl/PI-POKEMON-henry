@@ -46,7 +46,7 @@ module.exports = (sequelize) => {
     moves:{
       type:DataTypes.ARRAY(DataTypes.STRING),
       allowNull:true,
-      defaultValue: ["Unknown"]
+      defaultValue: []
     },
     hp:{
       type:DataTypes.INTEGER,
