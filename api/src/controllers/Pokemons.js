@@ -18,6 +18,7 @@ const obtenerPokemonsters = async (req,res, next) =>{
     try {
 
       
+      
 
         //ruta principal .. de aquí traemos 20 pokemons que nos trae la api
         const getApi = await axios.get('https://pokeapi.co/api/v2/pokemon')
@@ -89,17 +90,23 @@ const obtenerPokemonsters = async (req,res, next) =>{
 
         
         const pokeName = []
-        if(name){
 
-         pokeName.push(totalPokemons.filter( el => el.name.toLowerCase().includes(name.toLowerCase())))
+        if(!name){
+          
+          res.status(200).send(totalPokemons)
         
-          pokeName.length?
-          res.status(200).send(pokeName) :
-          res.status(404).send([])
 
           }else{
 
-          res.status(200).send(totalPokemons)
+            //let personajeName = await personajesTotal.filter( el => el.name.toLowerCase().includes(name.toLowerCase()))
+            let filtro = await totalPokemons.filter( el => el.name.toLowerCase() === (name.toLowerCase()))
+            console.log(filtro)
+
+            //pokeName.push()
+            filtro.length?
+            res.status(200).send(filtro) :
+            res.status(404).send("no encontré el pokemon")
+          
          }
 
 
