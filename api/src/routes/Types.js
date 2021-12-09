@@ -9,9 +9,7 @@ const {obtenerTypes} = require('../controllers/Types')
 
 
 
-router.get('/', (req,res,next)=>{
-    res.send("hola desde el get de type!")
-})
+router.get('/', obtenerTypes)
 
 
 

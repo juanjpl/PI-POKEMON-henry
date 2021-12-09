@@ -128,7 +128,7 @@ const buscarPokemon = async (req , res , next)=>{
      let pokemonId = await pokemonTotal.filter( el => el.id == id);
      pokemonId.length ?
      res.status(200).json(pokemonId):
-     res.status(404).send('Character not found ! ')
+     res.status(404).send('Pokemon not found ! ')
  }
 
 }
