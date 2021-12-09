@@ -22,6 +22,8 @@ server.use((req, res, next) => {
   next();
 });
 
+
+//declaramos la ruta que vamos a usar ---> y que usaremos el archivo routes que contendrá las rutas generales
 server.use('/', routes);
 
 // Error catching endware.
