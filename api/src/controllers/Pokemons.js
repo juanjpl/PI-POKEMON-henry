@@ -89,7 +89,7 @@ const obtenerPokemonsters = async (req,res, next) =>{
         }
 
         
-        const pokeName = []
+        
 
         if(!name){
           
@@ -97,12 +97,14 @@ const obtenerPokemonsters = async (req,res, next) =>{
         
 
           }else{
-
+            //con el includes podemos pedir que tengan incluida parte de lo ingresado en el input 
             //let personajeName = await personajesTotal.filter( el => el.name.toLowerCase().includes(name.toLowerCase()))
+            
+            
             let filtro = await totalPokemons.filter( el => el.name.toLowerCase() === (name.toLowerCase()))
             console.log(filtro)
 
-            //pokeName.push()
+         
             filtro.length?
             res.status(200).send(filtro) :
             res.status(404).send("no encontré el pokemon")
