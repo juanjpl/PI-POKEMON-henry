@@ -4,7 +4,7 @@ const router = express.Router()
 
 
 //importamos las funciones del controlador 
-const {obtenerPokemons , crearPokemons, buscarPokemon , borrarPokemon ,obtenerPokemonsters } = require('../controllers/Pokemons')
+const { crearPokemons, buscarPokemon , borrarPokemon ,obtenerPokemonsters } = require('../controllers/Pokemons')
 
 
 
