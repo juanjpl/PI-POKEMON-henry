@@ -11,7 +11,14 @@ const capitalStr = (string) => {
 
 const obtenerPokemonsters = async (req,res, next) =>{
 
+  //const name = req.query.name;
+  
+  const name = req.query.name;
+
     try {
+
+      
+
         //ruta principal .. de aquí traemos 20 pokemons que nos trae la api
         const getApi = await axios.get('https://pokeapi.co/api/v2/pokemon')
 
@@ -64,36 +71,41 @@ const obtenerPokemonsters = async (req,res, next) =>{
                 });
               } 
 
-              /*
-              else {
-                pokeInfo.push({
-                  id: totalPokemons[i].id,
-                  name:capitalStr (totalPokemons[i].name),
-                  type: totalPokemons[i].pokemon_types.map((type)=>capitalStr(type)),
-                  moves: totalPokemons[i].moves.map((move)=>capitalStr(move)),
-                  sprites: totalPokemons[i].srites,
-                  weight: totalPokemons[i].weight,
-                  height: totalPokemons[i].height,
-                  hp: totalPokemons[i].hp,
-                  attack: totalPokemons[i].attack,
-                  defense: totalPokemons[i].defense,
-                  speed: totalPokemons[i].speed,
-                  createdInDB: totalPokemons[i].createdInDB
-                  
-                });
-              }
-              */
+
 
              
         }
       
+        const totalPokemons =[]
+
+
         if(!getDB){
           res.send(pokeInfo)
-        }else{
-          const totalPokemons = [...pokeInfo , ...getDB]
-          res.send(totalPokemons)
+        }else {
+          
+          totalPokemons.push( ...pokeInfo , ...getDB )
+         
         }
-    
+
+        
+        const pokeName = []
+        if(name){
+
+         pokeName.push(totalPokemons.filter( el => el.name.toLowerCase().includes(name.toLowerCase())))
+        
+          pokeName.length?
+          res.status(200).send(pokeName) :
+          res.status(404).send([])
+
+          }else{
+
+          res.status(200).send(totalPokemons)
+         }
+
+
+       
+
+
         
     } catch (error) {
         next(error)
@@ -223,11 +235,11 @@ const obtenerPokemons = async(req , res ,next) =>{
 
   if(name){
 
-      let pokeName = pokemonTotal.filter( el => el.name.toLowerCase().includes(name.toLowerCase()))
+      let pokeName =await  pokemonTotal.filter( el => el.name.toLowerCase().includes(name.toLowerCase()))
       
       pokeName.length?
       res.status(200).send(pokeName) :
-      res.status(404).send("no se encuentraron pokemons con ese nombre")
+      res.status(404).send([])
   }else{
       res.status(200).send(pokemonTotal)
   }
@@ -301,5 +313,6 @@ module.exports ={
     obtenerPokemons,
     crearPokemons,
     buscarPokemon,
-    borrarPokemon
+    borrarPokemon,
+    obtenerPokemonsters
 }

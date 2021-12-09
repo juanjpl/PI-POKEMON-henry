@@ -4,13 +4,13 @@ const router = express.Router()
 
 
 //importamos las funciones del controlador 
-const {obtenerPokemons , crearPokemons, buscarPokemon , borrarPokemon } = require('../controllers/Pokemons')
+const {obtenerPokemons , crearPokemons, buscarPokemon , borrarPokemon ,obtenerPokemonsters } = require('../controllers/Pokemons')
 
 
 
 
 //ruta para traer los pokemons
-router.get('/', obtenerPokemons);
+router.get('/', obtenerPokemonsters);
 
 //ruta para buscar pokemons por i ---- > uso de params 
 router.get('/:id' , buscarPokemon );
