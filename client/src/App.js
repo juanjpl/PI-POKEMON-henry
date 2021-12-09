@@ -1,11 +1,19 @@
-import './App.css';
+import React from "react";
+import Home from './componentes/Home/Home'
+
+
+import './App.css'
 
 function App() {
+
+
   return (
-    <div className="App">
-      <h1>Henry Pokemon</h1>
+
+    <div className='App'>
+     <Home/>
     </div>
-  );
+  )
+  
 }
 
-export default App;
+export default App
